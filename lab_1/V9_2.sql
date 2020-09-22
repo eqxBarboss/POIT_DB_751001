@@ -26,9 +26,9 @@ SELECT
 FROM
 	[AdventureWorks].[HumanResources].[Employee]
 WHERE
-	DATEDIFF(YEAR, [BirthDate], '1981') <= 0
+	[BirthDate] > '1980-12-31'
 	AND
-	DATEDIFF(DAY, [HireDate], '2003-04-2') <= 0;
+	[HireDate] > '2003-04-1';
 --------------------------------------------- #undef SUBTASK1 -------------------------------------------
 
 --------------------------------------------- #define SUBTASK2 ------------------------------------------
