@@ -5,13 +5,13 @@ GO
 
 --------------------------------------------- #define SUBTASK_A -----------------------------------------
 CREATE TABLE [dbo].[StateProvince] (
-	  [StateProvinceID]			INT			NOT NULL
-	, [StateProvinceCode]		NCHAR(3)	NOT NULL
-	, [CountryRegionCode]		NVARCHAR(3) NOT NULL
-	, [IsOnlyStateProvinceFlag] FLAG		NOT NULL
-	, [Name]					NAME		NOT NULL
-	, TerritoryID				INT			NOT NULL
-	, ModifiedDate				DATETIME	NOT NULL);	
+	  [StateProvinceID]         INT         NOT NULL
+	, [StateProvinceCode]       NCHAR(3)    NOT NULL
+	, [CountryRegionCode]       NVARCHAR(3) NOT NULL
+	, [IsOnlyStateProvinceFlag] FLAG        NOT NULL
+	, [Name]                    NAME        NOT NULL
+	, [TerritoryID]             INT         NOT NULL
+	, [ModifiedDate]            DATETIME    NOT NULL);	
 --------------------------------------------- #undef SUBTASK_A ------------------------------------------
 
 --------------------------------------------- #define SUBTASK_B -----------------------------------------
