@@ -3,12 +3,12 @@
 USE [AdventureWorks];
 GO
 
---------------------------------------------- #define SUBTASK1 ------------------------------------------
+--------------------------------------------- #define SUBTASK_A -----------------------------------------
 ALTER TABLE [dbo].[StateProvince]
 	ADD [AddressType] NVARCHAR(50) null;
---------------------------------------------- #undef SUBTASK1 -------------------------------------------
+--------------------------------------------- #undef SUBTASK_A ------------------------------------------
 	
---------------------------------------------- #define SUBTASK2 ------------------------------------------
+--------------------------------------------- #define SUBTASK_B -----------------------------------------
 SELECT * INTO [#tempStateProvince]
 FROM [dbo].[StateProvince];
 
@@ -21,9 +21,9 @@ INNER JOIN [Person].[BusinessEntityAddress] [bea]
 	ON ([a].[AddressID] = [bea].[AddressID])
 INNER JOIN [Person].[AddressType] [at]
 	ON ([bea].[AddressTypeID] = [at].[AddressTypeID]);
---------------------------------------------- #undef SUBTASK2 -------------------------------------------
+--------------------------------------------- #undef SUBTASK_B ------------------------------------------
 
---------------------------------------------- #define SUBTASK3 ------------------------------------------
+--------------------------------------------- #define SUBTASK_C -----------------------------------------
 UPDATE [dbo].[StateProvince]
 SET
 	  [dbo].[StateProvince].[AddressType] = [tsp].[AddressType]
@@ -32,9 +32,9 @@ FROM [#tempStateProvince] [tsp]
 INNER JOIN [Person].[CountryRegion] [cr]
 	ON ([cr].[CountryRegionCode] = [tsp].[CountryRegionCode])
 WHERE ([dbo].[StateProvince].[StateProvinceID] = [tsp].[StateProvinceID]);
---------------------------------------------- #undef SUBTASK3 -------------------------------------------
+--------------------------------------------- #undef SUBTASK_C ------------------------------------------
 
---------------------------------------------- #define SUBTASK4 ------------------------------------------
+--------------------------------------------- #define SUBTASK_D -----------------------------------------
 DELETE FROM [dbo].[StateProvince]
 FROM [dbo].[StateProvince] [sp]
 INNER JOIN (
@@ -46,9 +46,9 @@ INNER JOIN (
 ) [maxSPIDbyAT]
 	ON ([maxSPIDbyAT].[AddressType] = [sp].[AddressType])
 WHERE [sp].[StateProvinceID] <> [maxSPIDbyAT].[MaxStateProvinceID];
---------------------------------------------- #undef SUBTASK4 -------------------------------------------
+--------------------------------------------- #undef SUBTASK_D ------------------------------------------
 
---------------------------------------------- #define SUBTASK5 ------------------------------------------
+--------------------------------------------- #define SUBTASK_E -----------------------------------------
 ALTER TABLE [dbo].[StateProvince]
 	DROP COLUMN [AddressType]
 
@@ -77,10 +77,10 @@ WHERE [SCHEMAS].[NAME] = 'dbo' and [TABLES].[NAME] = 'StateProvince'
 
 ALTER TABLE [dbo].[StateProvince]
   DROP CONSTRAINT [PK_StateProvinceID_StateProvinceCode], [TerritoryID_Domain_Check], [TerritoryID_Default_Value]
---------------------------------------------- #undef SUBTASK5 -------------------------------------------
+--------------------------------------------- #undef SUBTASK_E ------------------------------------------
 
---------------------------------------------- #define SUBTASK6 ------------------------------------------
+--------------------------------------------- #define SUBTASK_F -----------------------------------------
 DROP TABLE [dbo].[StateProvince]
---------------------------------------------- #undef SUBTASK6 -------------------------------------------
+--------------------------------------------- #undef SUBTASK_F ------------------------------------------
 
 --------------------------------------------- #undef TASK1 ----------------------------------------------
