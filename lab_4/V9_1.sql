@@ -66,7 +66,7 @@ INSERT INTO [SpecialOffer_View] (
 	, [rowguid]
 	, [ModifiedDate])
 VALUES (
-	'bla-bla-bla'
+	  'bla-bla-bla'
 	, 0
 	, 'No Discount'
 	, 'No Discount'
