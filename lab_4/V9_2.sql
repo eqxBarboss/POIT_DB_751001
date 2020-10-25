@@ -106,7 +106,7 @@ BEGIN
 	DELETE 
 	FROM [Sales].[SpecialOfferProduct]
 	WHERE [Sales].[SpecialOfferProduct].[ProductID] IN (
-		SELECT DISTINCT deleted.[ProductID]
+		SELECT [p].[ProductID]
 		FROM deleted
 		INNER JOIN [Production].[Product] [p]
 			ON ([p].[Name] = deleted.[Name]));
@@ -160,7 +160,7 @@ GO
 
 DELETE 
 FROM [SpecialOfferInfo_View] 
-WHERE ((SpecialOfferID = 18) AND (ProductID = 1));
+WHERE [Name] = 'Adjustable Race';
 GO
 --------------------------------------------- #undef SUBTASK_C ------------------------------------------
 
